@@ -1,0 +1,127 @@
+ScreenManager:
+    LoginScreen:
+    RegistrationScreen:
+    HomeScreen:
+
+<LoginScreen>:
+    name: "login"
+
+    username: username
+    password: password
+
+    BoxLayout:
+        orientation: "vertical"
+
+        GridLayout:
+            cols: 1
+
+            Label:
+                text: "Login User"
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Username"
+            
+            TextInput:
+                id: username
+                multiline: False
+            
+            Label:
+                text: "Password"
+            
+            TextInput:
+                id: password
+                multiline: False
+                password: True
+            
+        GridLayout:
+            rows: 2
+
+            Button:
+                text: "Login"
+                on_press: root.login_user()
+
+            Button:
+                text: "Create account"
+                on_press:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "register"
+
+<RegistrationScreen>:
+    name: "register"
+
+    email: email
+    username: username
+    password: password
+
+    BoxLayout:
+        orientation: "vertical"
+
+        GridLayout:
+            cols: 1
+
+            Label:
+                text: "Create account"
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Email"
+            
+            TextInput:
+                id: email
+                multiline: False
+
+            Label:
+                text: "Username"
+            
+            TextInput:
+                id: username
+                multiline: False
+            
+            Label:
+                text: "Password"
+            
+            TextInput:
+                id: password
+                multiline: False
+                password: True
+            
+        
+        GridLayout:
+            rows: 2
+
+            Button:
+                text: "Already have account? Login here."
+                on_press: 
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "login"
+            
+            Button:
+                text: "Register"
+                on_press: root.register_user()
+
+<HomeScreen>:
+    name: "home"
+
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: "Welcome to the home screen"
+
+        BoxLayout:
+            orientation: "vertical"
+
+            Label:
+                text: "Username: " + root.username
+            
+            Label:
+                text: "Email: " + root.email
+
+        Button:
+            text: "Logout"
+            on_press: root.logout()
