@@ -34,7 +34,14 @@ class LoginScreen(Screen):
 
             box = BoxLayout(orientation="vertical")
             box.add_widget(Label(text="Invalid username or password"))
-            box.add_widget(Button(text="Close", on_press=lambda x: popup.dismiss(), size_hint=(1, None), height=40))
+            box.add_widget(
+                Button(
+                    text="Close",
+                    on_press=lambda x: popup.dismiss(),
+                    size_hint=(1, None),
+                    height=40,
+                )
+            )
 
             popup = Popup(
                 title="Login failed",
